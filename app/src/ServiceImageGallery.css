@@ -3,12 +3,13 @@
 :root {
   --primary-color-gallery: #2a6f97;
   --secondary-color-gallery: #012a4a;
-  --light-bg-gallery: #f8f9fa; /* Slightly different from other light BGs for distinction if needed */
+  --light-bg-gallery: #f8f9fa;
   --text-color-dark-gallery: #333333;
   --text-color-light-gallery: #ffffff;
   --border-color-gallery: #e9ecef;
   --card-shadow-gallery: 0 5px 15px rgba(0, 0, 0, 0.07);
   --font-primary-gallery: 'Poppins', sans-serif;
+  --image-container-bg-gallery: #f0f0f0; /* Background for letterboxing if using contain */
 }
 
 .service-image-gallery-page {
@@ -23,7 +24,7 @@
 .section-padding-small-gallery {
   padding: 30px 20px;
 }
-.container { /* Assuming this is globally defined, or define it here */
+.container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
@@ -67,47 +68,64 @@
   margin-bottom: 30px;
   padding-bottom: 10px;
   border-bottom: 2px solid var(--primary-color-gallery);
-  display: inline-block; /* So border only spans text width */
+  display: inline-block;
   font-weight: 500;
 }
 
 .image-grid-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly smaller min for cards */
+  gap: 25px; /* Adjusted gap */
 }
 
 .image-card-gallery {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: var(--card-shadow-gallery);
-  overflow: hidden; /* To contain the image and its border-radius */
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 .image-card-gallery:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-img-container { /* NEW WRAPPER for the image */
+  width: 100%;
+  /* === ADJUST THESE HEIGHTS AS NEEDED === */
+  /* This height is for the container that will show the image */
+  height: 250px;   /* Default/Desktop height for the image *area* */
+  background-color: var(--image-container-bg-gallery); /* For letterboxing */
+  display: flex; /* To center the image if it's smaller due to 'contain' */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Just in case */
 }
 
 .gallery-img {
-  width: 100%;
-  height: 220px; /* Fixed height for uniform look */
-  object-fit: cover; /* Crop image to fit, maintaining aspect ratio */
-  display: block; /* Remove any extra space below image */
-  border-bottom: 1px solid var(--border-color-gallery); /* If caption is present */
+  display: block;
+  max-width: 100%;  /* Image won't exceed container width */
+  max-height: 100%; /* Image won't exceed container height */
+  width: auto;      /* Let aspect ratio determine width if height is constrained by max-height */
+  height: auto;     /* Let aspect ratio determine height if width is constrained by max-width */
+  object-fit: contain; /* <<< KEY CHANGE: Show full image, letterbox if needed */
 }
 
 .image-caption-gallery {
-  padding: 12px 15px;
-  font-size: 0.9rem;
-  color: #555;
+  padding: 15px 18px;
+  font-size: 0.95rem;
+  color: #444;
   text-align: center;
   margin: 0;
-  background-color: #fff; /* Ensure caption background is white */
-  min-height: 40px; /* Ensure some space for caption even if short */
+  background-color: #fff;
+  min-height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-grow: 1;
+  border-top: 1px solid var(--border-color-gallery);
 }
 .image-card-gallery:hover .image-caption-gallery {
     color: var(--primary-color-gallery);
@@ -115,7 +133,7 @@
 
 
 /* Responsive Adjustments */
-@media (max-width: 992px) {
+@media (max-width: 992px) { /* Tablet */
   .gallery-hero h1 {
     font-size: 2.2rem;
   }
@@ -123,14 +141,20 @@
     font-size: 1.8rem;
   }
   .image-grid-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Adjusted */
     gap: 20px;
+  }
+  .gallery-img-container { /* WRAPPER */
+    height: 230px; /* Tablet height for image *area* */
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Mobile - Cards stack to single column */
   .section-padding-gallery {
-    padding: 30px 15px;
+    padding: 30px 10px;
+  }
+  .container {
+    padding: 0 10px;
   }
   .gallery-hero h1 {
     font-size: 1.8rem;
@@ -143,19 +167,25 @@
     margin-bottom: 20px;
   }
   .image-grid-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Or simply 1fr for single column */
-    gap: 15px;
+    grid-template-columns: 1fr;
+    gap: 25px;
   }
-  .gallery-img {
-    height: 200px;
+  .gallery-img-container { /* WRAPPER */
+    /* Make the image area taller on mobile to show more */
+    height: 280px; /* << MOBILE HEIGHT FOR IMAGE AREA - ADJUST THIS! */
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* Small Mobile */
     .image-grid-gallery {
-        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: 20px;
     }
-    .gallery-img {
-        height: 250px; /* Allow more height in single column */
+    .gallery-img-container { /* WRAPPER */
+        height: 250px; /* << SMALL MOBILE HEIGHT FOR IMAGE AREA - ADJUST THIS! */
+    }
+    .image-caption-gallery {
+        font-size: 0.9rem;
+        padding: 12px 15px;
+        min-height: 40px;
     }
 }

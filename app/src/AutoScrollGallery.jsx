@@ -26,11 +26,7 @@ const galleryItems = [
     src: img2,
     alt: "Gallery Image 2",
   },
-  {
-    id: 3,
-    src: img3,
-    alt: "Gallery Image 3",
-  },
+  
   {
     id: 4,
     src: img4,

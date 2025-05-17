@@ -129,28 +129,7 @@ export const AboutUs = () => {
         </div>
       </section>
 
-      <section className="about-services section-padding-deep bg-light">
-        <div className="container">
-          <h2 className="section-title">
-            Comprehensive Care Services We Offer
-          </h2>
-          <div className="services-grid">
-            {services.map((service) => (
-              <div key={service.id} className="service-card">
-                <img
-                  src={service.image}
-                  alt={service.alt}
-                  className="service-card-img"
-                />
-                <div className="service-card-content">
-                  <h3>{service.name}</h3>
-                  <p>{service.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       <section className="about-branches section-padding">
         <div className="container">

@@ -10,28 +10,36 @@ import reading from "/reading.jpg"
 import seniorcitizencomfort from "/seniorcitizencomfortjpg.jpg"
 import outdoor from "/outdoor.jpg"
 import vital from "/vitalsign.jpg"
-
+import seniorcitizen from "/seniorcitizen.jpeg"
 import daily from "/dailyactivity.jpeg"
+import patientfood from "/patientfood.jpeg"
+import mamtakecare from "/mamtakecare.jpeg"
+import mamsrpt from "/mamsrpt.jpeg"
+import foodcamp from "/foodcamp.jpeg"
+import mamflood from "/mamflood.jpeg"
+import mamwaterdonation from "/mamwaterdonation.jpeg"
+import floodfood from "/floodfood.jpeg"
+import visting from "/visting.jpeg"
 // Example Image Data - REPLACE with your actual image paths and details
 const galleryImagesData = [
   // Home Nursing Services
   {
     id: "hns1",
-    src: medication,
+    src: mamsrpt,
     alt: "Nurse providing medication to a patient at home",
     caption: "Medication Management at Home",
     category: "Home Nursing Services",
   },
   {
     id: "hns2",
-    src: proffesionalcare,
+    src: patientfood,
     alt: "Wound care being administered by a home nurse",
     caption: "Professional Wound Care",
     category: "Home Nursing Services",
   },
   {
     id: "hns3",
-    src: vital,
+    src: seniorcitizen,
     alt: "Nurse checking vitals of a patient in their home",
     caption: "Vital Signs Monitoring",
     category: "Home Nursing Services",
@@ -39,21 +47,21 @@ const galleryImagesData = [
   // Patient Care Taker Service (General)
   {
     id: "pcts1",
-    src: mobility,
+    src: mamtakecare,
     alt: patientcarecamping,
     caption: "Mobility Assistance",
     category: "Patient Care Taker Service",
   },
   {
     id: "pcts2",
-    src: patientcarecamping,
+    src: foodcamp,
     alt: "Caretaker providing companionship to a patient",
     caption: "Companionship & Support",
     category: "Patient Care Taker Service",
   },
   {
     id: "pcts3",
-    src: daily,
+    src: mamflood,
     alt: "Caretaker helping with daily activities",
     caption: "Daily Activity Support",
     category: "Patient Care Taker Service",
@@ -61,32 +69,26 @@ const galleryImagesData = [
   // Patient Care Taker Service for Senior Citizen
   {
     id: "scs1",
-    src: mealsupport,
+    src: floodfood,
     alt: "Caretaker assisting a senior citizen with a meal",
     caption: "Meal Assistance for Seniors",
     category: "Senior Citizen Care",
   },
   {
     id: "scs2",
-    src: outdoor,
+    src: mamwaterdonation,
     alt: "Senior citizen enjoying a walk with a caretaker",
     caption: "Outdoor Activities & Walks",
     category: "Senior Citizen Care",
   },
   {
     id: "scs3",
-    src: reading,
+    src: visting,
     alt: "Caretaker reading to a senior citizen",
     caption: "Engaging Activities for Seniors",
     category: "Senior Citizen Care",
   },
-  {
-    id: "scs4", // Added one more for this category as it was repeated in the prompt
-    src: seniorcitizencomfort,
-    alt: "Caretaker ensuring a safe environment for a senior",
-    caption: "Safe & Comfortable Living",
-    category: "Senior Citizen Care",
-  },
+  
 ];
 
 export const ServiceImageGallery = () => {
