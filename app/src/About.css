@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap');
+
+:root {
+  /* Using colors from the header for consistency */
+  --primary-color-about: #2a6f97; /* Calming blue */
+  --secondary-color-about: #012a4a; /* Darker blue for text */
+  --accent-color-about: #61a5c2; /* Lighter blue for accents */
+  --light-bg-about: #f4f8fa; /* Very light grey/blue for alternate sections */
+  --text-color-dark-about: #333333;
+  --text-color-light-about: #ffffff;
+  --font-primary-about: 'Poppins', sans-serif;
+  --font-secondary-about: 'Lora', serif;
+}
+
+.about-us-page {
+  font-family: var(--font-primary-about);
+  color: var(--text-color-dark-about);
+  line-height: 1.7;
+}
+
+.section-padding {
+  padding: 60px 20px;
+}
+.section-padding-deep {
+  padding: 80px 20px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.section-title {
+  font-family: var(--font-secondary-about);
+  font-size: 2.5rem;
+  color: var(--secondary-color-about);
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.bg-light {
+  background-color: var(--light-bg-about);
+}
+.bg-primary {
+  background-color: var(--primary-color-about);
+}
+.text-light {
+  color: var(--text-color-light-about);
+}
+.text-light h2, .text-light p {
+  color: var(--text-color-light-about);
+}
+.text-center {
+  text-align: center;
+}
+
+/* Hero Section */
+.about-hero {
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color-light-about);
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+}
+.hero-overlay {
+  background-color: rgba(0, 38, 70, 0.6); /* Dark blue overlay */
+  padding: 40px;
+  border-radius: 8px;
+  display: inline-block; /* So it doesn't take full width unless content pushes it */
+}
+.about-hero h1 {
+  font-family: var(--font-secondary-about);
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.hero-subtitle {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+/* Intro Section */
+.about-intro h2 {
+  font-family: var(--font-secondary-about);
+  font-size: 2.2rem;
+  color: var(--secondary-color-about);
+  margin-bottom: 20px;
+  text-align: center;
+}
+.about-intro p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  text-align: justify;
+}
+
+/* Services Section */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.service-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.service-card-content {
+  padding: 25px;
+  flex-grow: 1; /* Allows content to fill space if cards have different text lengths */
+}
+
+.service-card-content h3 {
+  font-family: var(--font-primary-about);
+  font-size: 1.5rem;
+  color: var(--primary-color-about);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.service-card-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Branches Section */
+.branches-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+.branches-text {
+  flex: 1;
+  min-width: 300px;
+}
+.branches-text .section-title {
+  text-align: left;
+}
+.branch-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+.branch-list li {
+  padding: 8px 0 8px 25px;
+  position: relative;
+  font-size: 1.05rem;
+}
+.branch-list li::before {
+  content: '✓'; /* or use an icon font/SVG */
+  color: var(--accent-color-about);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+.branches-image-container {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+.branch-map-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* CTA Section */
+.about-cta h2 {
+  font-family: var(--font-secondary-about);
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+.about-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-button {
+  background-color: var(--text-color-light-about);
+  color: var(--primary-color-about);
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  border: 2px solid transparent;
+}
+.cta-button:hover {
+  background-color: transparent;
+  color: var(--text-color-light-about);
+  border-color: var(--text-color-light-about);
+  transform: translateY(-3px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .about-hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .branches-content {
+    flex-direction: column;
+  }
+  .branches-text .section-title {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 40px 15px;
+  }
+  .section-padding-deep {
+    padding: 60px 15px;
+  }
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  .about-hero {
+    padding: 60px 15px;
+  }
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .about-intro h2 {
+    font-size: 1.8rem;
+  }
+  .about-intro p {
+    font-size: 1rem;
+    text-align: left; /* Justify might be hard to read on small screens */
+  }
+  .services-grid {
+    grid-template-columns: 1fr; /* Stack service cards on mobile */
+    gap: 20px;
+  }
+  .service-card-content h3 {
+    font-size: 1.3rem;
+  }
+  .branches-text .section-title {
+    font-size: 1.8rem;
+  }
+  .branch-list li {
+    font-size: 1rem;
+    padding: 6px 0 6px 20px;
+  }
+  .about-cta h2 {
+    font-size: 1.8rem;
+  }
+  .about-cta p {
+    font-size: 1rem;
+  }
+}

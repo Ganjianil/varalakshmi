@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --primary-color-dp: #2a6f97;   /* Consistent with header */
+  --secondary-color-dp: #012a4a; /* Consistent with header */
+  --text-color-dark-dp: #333333;
+  --bg-color-dp: #f8f9fa; /* Light background for the section */
+  --font-primary-dp: 'Poppins', sans-serif;
+  --font-secondary-dp: 'Lora', serif; /* For name/title for a slightly more formal feel */
+}
+
+.director-profile-section {
+  background-color: var(--bg-color-dp);
+  padding: 40px 20px; /* Adjust padding as needed */
+  /* This component would typically be placed directly below the header,
+     so no top margin is added here, assuming the page layout handles that. */
+}
+
+.dp-container { /* Specific container for this component */
+  max-width: 1000px; /* Adjust for desired width */
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  align-items: center; /* Vertically align items if they have different heights */
+  gap: 30px; /* Space between photo and text columns */
+}
+
+.director-photo-column {
+  flex: 1; /* Allows it to take up space */
+  min-width: 250px; /* Minimum width before wrapping/shrinking too much */
+  max-width: 300px; /* Max width for the photo container */
+  margin: 0 auto; /* Center the photo column if it's narrower than its flex space */
+}
+
+.director-photo {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 50%; /* Circular photo */
+  /* Or use a soft radius: border-radius: 15px; */
+  object-fit: cover; /* Ensure image covers the area well */
+  aspect-ratio: 1 / 1; /* Ensure it's a circle even if original image isn't square */
+  border: 5px solid #fff; /* Optional white border */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.director-info-column {
+  flex: 2; /* Takes up more space than the photo */
+  min-width: 300px; /* Minimum width for text content */
+}
+
+.director-name {
+  font-family: var(--font-secondary-dp);
+  font-size: 2.2rem;
+  color: var(--secondary-color-dp);
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.director-title {
+  font-family: var(--font-primary-dp);
+  font-size: 1.2rem;
+  color: var(--primary-color-dp);
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.director-bio {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-color-dark-dp);
+  margin-bottom: 20px;
+  text-align: justify; /* Or 'left' if preferred */
+}
+.director-bio p br {
+    content: "";
+    display: block;
+    margin-bottom: 0.8em; /* Space between paragraphs if bio has newlines */
+}
+
+
+.director-quote {
+  font-family: var(--font-secondary-dp);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--primary-color-dp);
+  padding-left: 20px;
+  border-left: 3px solid var(--primary-color-dp);
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .dp-container {
+    flex-direction: column; /* Stack photo and text on top of each other */
+    text-align: center; /* Center text content when stacked */
+    gap: 25px;
+  }
+
+  .director-photo-column {
+    max-width: 200px; /* Smaller photo on mobile */
+    margin-bottom: 0; /* Remove bottom margin if any was added */
+  }
+
+  .director-name {
+    font-size: 1.8rem;
+  }
+
+  .director-title {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .director-bio {
+    font-size: 0.95rem;
+    text-align: left; /* Justify might be too much for mobile */
+  }
+  .director-bio p br {
+    margin-bottom: 0.7em;
+  }
+
+  .director-quote {
+    font-size: 1rem;
+    margin-left: auto; /* Center the quote block if text-align: center is on parent */
+    margin-right: auto;
+    max-width: 90%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+    .director-profile-section {
+        padding: 30px 15px;
+    }
+    .director-name {
+        font-size: 1.6rem;
+    }
+    .director-title {
+        font-size: 0.9rem;
+    }
+}

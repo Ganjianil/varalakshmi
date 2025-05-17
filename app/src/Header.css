@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #2a6f97;
+  --secondary-color: #012a4a;
+  --accent-color: #61a5c2;
+  --background-color: #f8f9fa;
+  --text-color-light: #ffffff;
+  --text-color-dark: #333333;
+  --header-height: 70px;
+  --header-height-scrolled: 60px;
+  --font-family: 'Poppins', sans-serif;
+}
+
+.site-header {
+  background-color: var(--text-color-light);
+  color: var(--secondary-color);
+  padding: 0 1rem;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Stacking context for header */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.site-header.scrolled {
+  height: var(--header-height-scrolled);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.company-logo {
+  text-decoration: none;
+  color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.company-logo:hover {
+  transform: scale(1.03);
+}
+
+.company-name-main {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.company-name-tagline {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--secondary-color);
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+.desktop-nav {
+  margin-left: auto;
+  display: flex;
+}
+
+.desktop-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.desktop-nav ul li a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0.2rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.desktop-nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent-color);
+  transition: width 0.3s ease-in-out;
+}
+
+.desktop-nav ul li a:hover,
+.desktop-nav ul li a:focus {
+  color: var(--accent-color);
+}
+
+.desktop-nav ul li a:hover::after,
+.desktop-nav ul li a:focus::after {
+  width: 100%;
+}
+
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001; /* Above mobile nav if they could overlap, and above header content */
+  flex-shrink: 0;
+}
+
+.hamburger-menu .hamburger-bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: var(--secondary-color);
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger-menu.open .hamburger-bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.open .hamburger-bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobile-nav {
+  /* display property is handled by React conditional rendering; <nav> is block by default */
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  background-color: var(--text-color-light);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  animation: slideDown 0.4s ease-in-out forwards;
+  overflow-y: auto;
+  z-index: 999; /* Below hamburger icon (1001) but within header's stacking context (1000) */
+                 /* Ensures it's above page content that might be under the fixed header */
+}
+
+.site-header.scrolled .mobile-nav {
+    top: var(--header-height-scrolled);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-nav ul li {
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-nav ul li a {
+  display: block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mobile-nav ul li a:hover,
+.mobile-nav ul li a:focus {
+  background-color: var(--accent-color);
+  color: var(--text-color-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 850px) {
+  .company-name-main {
+    font-size: 1.4rem;
+  }
+  .company-name-tagline {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    justify-content: flex-start;
+  }
+
+  .hamburger-menu {
+    display: block;
+    margin-right: 1rem;
+  }
+
+  .company-logo {
+    flex-grow: 1;
+  }
+  .company-name-main {
+    font-size: 1.3rem;
+  }
+  .company-name-tagline {
+    font-size: 0.65rem;
+    max-width: 200px;
+    white-space: normal;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+  /* .mobile-nav styling is primarily handled by its base class now,
+     as its presence in DOM is controlled by React state. */
+}

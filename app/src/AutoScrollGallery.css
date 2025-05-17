@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --asg-bg-color: #f0f2f5;
+  --asg-item-gap: 15px;
+  --items-visible-desktop: 5;
+  --items-visible-tablet: 3;
+  --items-visible-mobile: 2;
+  --asg-image-height-desktop: 180px; /* Control image height */
+  --asg-image-height-tablet: 160px;
+  --asg-image-height-mobile: 150px;
+}
+
+.auto-scroll-gallery-section {
+  background-color: var(--asg-bg-color);
+  padding: 40px 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.asg-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px; /* Provides padding so mask doesn't touch edges */
+}
+
+.asg-title {
+  font-size: 2.2rem;
+  color: #012a4a;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.auto-scroll-gallery-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  /* Fade out edges for smoother appearance */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.auto-scroll-gallery-inner {
+  display: flex;
+  /* Width will be set by the sum of its children (2 * N items) */
+  /* The animation moves this entire strip */
+  animation: scrollHorizontal var(--animation-duration, 50s) linear infinite;
+}
+
+.auto-scroll-gallery-wrapper:hover .auto-scroll-gallery-inner {
+  animation-play-state: paused;
+}
+
+@keyframes scrollHorizontal {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    /* Scroll by the width of the original set of items.
+       Since the inner container holds 2 sets, moving it by -50% of its *own* width
+       effectively scrolls one full set of original items. */
+    transform: translateX(-50%);
+  }
+}
+
+.gallery-image-item-asg {
+  flex-shrink: 0; /* Prevent images from shrinking */
+  box-sizing: border-box;
+  /* Desktop: 5 items visible */
+  /* Calculate width: (100% of wrapper / items_visible) - adjust for gaps */
+  /* Each item takes 1/Nth of the space, then we subtract the gap contribution */
+  width: calc((100% / var(--items-visible-desktop)) - (var(--asg-item-gap) * (var(--items-visible-desktop) - 1) / var(--items-visible-desktop)));
+  margin-right: var(--asg-item-gap);
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Remove margin from the very last item in the duplicated list to prevent extra space at the end of the animation cycle */
+/* This targets the last child of the .auto-scroll-gallery-inner */
+.auto-scroll-gallery-inner > .gallery-image-item-asg:last-child {
+  margin-right: 0;
+}
+/* And also ensure the item that *would have been* last in the first set also doesn't have margin
+   if it's immediately followed by the start of the duplicated set.
+   This is tricky with pure CSS duplication. The gap is best handled by the flex container.
+   Let's simplify: the gap is only *between* items.
+*/
+.gallery-image-item-asg:not(:last-child) { /* This applies to all but the very last in the duplicated list */
+    /* margin-right: var(--asg-item-gap); */ /* Handled by flex gap if browser supports, or margin */
+}
+/* Using flex 'gap' on the parent is cleaner if widely supported, but margin-right is safer for older browsers.
+   If using margin-right, the width calculation needs to be precise.
+   Let's stick to margin-right and adjust the width calc.
+   The total width taken by N items is N * item_width + (N-1) * gap. This should be 100% of wrapper.
+   item_width = (100% - (N-1)*gap) / N
+*/
+.gallery-image-item-asg {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: calc((100% - (var(--items-visible-desktop) - 1) * var(--asg-item-gap)) / var(--items-visible-desktop));
+  margin-right: var(--asg-item-gap); /* This will be applied to N-1 items in each set */
+  overflow: hidden;
+  border-radius: 8px;
+}
+/* The last item of the *visible* set (which is the Nth item of the first block, and 2Nth item of the second block)
+   should not have a margin-right that contributes to the overall width calculation for the animation.
+   However, since we are duplicating the entire block, the margin-right on the "original last" item
+   will correctly create a gap before the "duplicated first" item.
+   The only one that truly needs no margin-right is the very last item of the duplicated list.
+*/
+.auto-scroll-gallery-inner > .gallery-image-item-asg:last-child {
+  margin-right: 0;
+}
+
+
+.gallery-image-item-asg img {
+  display: block;
+  width: 100%;
+  height: var(--asg-image-height-desktop); /* Use CSS variable for height */
+  object-fit: cover;
+  border-radius: 8px; /* Can be same as parent or none */
+  transition: transform 0.3s ease;
+}
+.gallery-image-item-asg:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) { /* Tablet */
+  .gallery-image-item-asg {
+    width: calc((100% - (var(--items-visible-tablet) - 1) * var(--asg-item-gap)) / var(--items-visible-tablet));
+  }
+  .gallery-image-item-asg img {
+    height: var(--asg-image-height-tablet);
+  }
+  .asg-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 767px) { /* Mobile */
+  .gallery-image-item-asg {
+    width: calc((100% - (var(--items-visible-mobile) - 1) * var(--asg-item-gap)) / var(--items-visible-mobile));
+  }
+  .gallery-image-item-asg img {
+    height: var(--asg-image-height-mobile);
+  }
+  .asg-title {
+    font-size: 1.8rem;
+  }
+  .auto-scroll-gallery-wrapper {
+    /* Make fade gentler on mobile if items are larger */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auto-scroll-gallery-inner {
+    animation: none;
+    /* If animation is off, you might want to make it horizontally scrollable by user */
+    /* overflow-x: auto; */
+    /* justify-content: flex-start; */ /* Align items to start if scrollable */
+  }
+   .auto-scroll-gallery-wrapper {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  /* If making it scrollable, ensure items don't have margin that breaks the scroll container */
+  /* .auto-scroll-gallery-inner > .gallery-image-item-asg:last-child {
+    margin-right: var(--asg-item-gap); // Add back gap if it becomes a scrollable list
+  } */
+}

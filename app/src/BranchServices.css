@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color-bs: #2a6f97;
+  --secondary-color-bs: #012a4a;
+  --accent-color-bs: #61a5c2;
+  --light-bg-bs: #f4f8fa;
+  --text-color-dark-bs: #333333;
+  --text-color-light-bs: #ffffff;
+  --border-color-bs: #e0e0e0;
+  --card-shadow-bs: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --font-primary-bs: 'Poppins', sans-serif;
+}
+
+.branch-services-page {
+  font-family: var(--font-primary-bs);
+  color: var(--text-color-dark-bs);
+  line-height: 1.7;
+}
+
+.section-padding {
+  padding: 50px 20px;
+}
+.section-padding-small {
+  padding: 30px 20px;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.text-center {
+  text-align: center;
+}
+.bg-light-bs {
+  background-color: var(--light-bg-bs);
+}
+
+/* Hero Section */
+.bs-hero {
+  background-color: var(--primary-color-bs);
+  color: var(--text-color-light-bs);
+}
+.bs-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+.hero-subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Section Title */
+.section-title-bs {
+  font-size: 2.2rem;
+  color: var(--secondary-color-bs);
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+/* Branches Grid */
+.branches-grid-container {
+  /* Styles for the section containing the grid */
+}
+.branches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.branch-card-bs {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: var(--card-shadow-bs);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.branch-card-bs:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.branch-card-img-bs {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.branch-card-content-bs {
+  padding: 20px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.branch-card-content-bs h3 {
+  font-size: 1.5rem;
+  color: var(--secondary-color-bs);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.branch-card-content-bs p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+.branch-select-btn {
+  background-color: var(--primary-color-bs);
+  color: var(--text-color-light-bs);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center;
+}
+.branch-select-btn:hover {
+  background-color: var(--accent-color-bs);
+}
+
+/* Selected Branch Details */
+.branch-details-container {
+  /* Styles for the section showing details */
+}
+.back-to-branches-btn {
+  background-color: var(--secondary-color-bs);
+  color: var(--text-color-light-bs);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 30px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+.back-to-branches-btn:hover {
+  background-color: #555; /* Darker shade for hover */
+}
+.selected-branch-name {
+  font-size: 2.5rem;
+  color: var(--primary-color-bs);
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.branch-details-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.branch-info-section,
+.branch-services-section {
+  flex: 1;
+  min-width: 300px;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow-bs);
+}
+.branch-info-section h3,
+.branch-services-section h3 {
+  font-size: 1.6rem;
+  color: var(--secondary-color-bs);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color-bs);
+  font-weight: 500;
+}
+.branch-info-section p {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.branch-info-section strong {
+  color: var(--secondary-color-bs);
+  font-weight: 600;
+}
+.branch-info-section a {
+  color: var(--primary-color-bs);
+  text-decoration: none;
+}
+.branch-info-section a:hover {
+  text-decoration: underline;
+}
+.branch-map-container {
+  margin-top: 20px;
+}
+.branch-map-container h4 {
+    font-size: 1.2rem;
+    color: var(--secondary-color-bs);
+    margin-bottom: 10px;
+}
+
+/* Services Offered Grid in Details View */
+.services-offered-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjusted minmax for better image fit */
+  gap: 20px; /* Increased gap slightly */
+}
+
+.service-offered-card {
+  background-color: #fff; /* Changed from light-bg for better contrast with page bg */
+  padding: 0; /* Remove padding, image will fill */
+  border-radius: 8px; /* Rounded corners for the card */
+  text-align: center;
+  border: 1px solid var(--border-color-bs);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* To ensure image border-radius is respected */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-offered-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.service-offered-img { /* UPDATED STYLES FOR SERVICE IMAGES */
+  width: 100%;
+  height: 130px; /* Adjust height as desired for service images */
+  object-fit: cover; /* This will cover the area, cropping if necessary */
+  display: block; /* Remove extra space below image */
+  /* border-bottom: 1px solid var(--border-color-bs); */ /* Optional: if you want a line between img and text */
+}
+
+.service-offered-card p { /* Text below the image */
+  font-size: 0.9rem; /* Slightly smaller for better fit */
+  color: var(--secondary-color-bs);
+  font-weight: 500;
+  margin: 0;
+  padding: 12px 10px; /* Padding for the text area */
+  background-color: #fff; /* Ensure text background is clean */
+  flex-grow: 1; /* Allow text area to take remaining space if needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .bs-hero h1 {
+    font-size: 2.2rem;
+  }
+  .section-title-bs, .selected-branch-name {
+    font-size: 2rem;
+  }
+  .services-offered-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 30px 15px;
+  }
+  .bs-hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .section-title-bs, .selected-branch-name {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+  .branches-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .branch-details-layout {
+    gap: 30px;
+  }
+  .branch-info-section h3,
+  .branch-services-section h3 {
+    font-size: 1.4rem;
+  }
+  .services-offered-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Further adjust for mobile */
+    gap: 15px;
+  }
+  .service-offered-img {
+    height: 110px; /* Slightly smaller images on mobile */
+  }
+  .service-offered-card p {
+    font-size: 0.85rem;
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+    .services-offered-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Even smaller for very small screens */
+    }
+     .service-offered-img {
+        height: 100px;
+    }
+}

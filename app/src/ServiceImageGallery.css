@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color-gallery: #2a6f97;
+  --secondary-color-gallery: #012a4a;
+  --light-bg-gallery: #f8f9fa; /* Slightly different from other light BGs for distinction if needed */
+  --text-color-dark-gallery: #333333;
+  --text-color-light-gallery: #ffffff;
+  --border-color-gallery: #e9ecef;
+  --card-shadow-gallery: 0 5px 15px rgba(0, 0, 0, 0.07);
+  --font-primary-gallery: 'Poppins', sans-serif;
+}
+
+.service-image-gallery-page {
+  font-family: var(--font-primary-gallery);
+  color: var(--text-color-dark-gallery);
+  background-color: var(--light-bg-gallery);
+}
+
+.section-padding-gallery {
+  padding: 50px 20px;
+}
+.section-padding-small-gallery {
+  padding: 30px 20px;
+}
+.container { /* Assuming this is globally defined, or define it here */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.text-center {
+  text-align: center;
+}
+
+/* Hero Section */
+.gallery-hero {
+  background-color: var(--primary-color-gallery);
+  color: var(--text-color-light-gallery);
+}
+.gallery-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.hero-subtitle-gallery {
+  font-size: 1.1rem;
+  font-weight: 300;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Main Gallery Content */
+.gallery-main-content {
+  /* Container for all category sections */
+}
+
+.image-category-section {
+  margin-bottom: 50px;
+}
+.image-category-section:last-child {
+  margin-bottom: 0;
+}
+
+.category-title-gallery {
+  font-size: 2rem;
+  color: var(--secondary-color-gallery);
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary-color-gallery);
+  display: inline-block; /* So border only spans text width */
+  font-weight: 500;
+}
+
+.image-grid-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.image-card-gallery {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow-gallery);
+  overflow: hidden; /* To contain the image and its border-radius */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.image-card-gallery:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-img {
+  width: 100%;
+  height: 220px; /* Fixed height for uniform look */
+  object-fit: cover; /* Crop image to fit, maintaining aspect ratio */
+  display: block; /* Remove any extra space below image */
+  border-bottom: 1px solid var(--border-color-gallery); /* If caption is present */
+}
+
+.image-caption-gallery {
+  padding: 12px 15px;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  margin: 0;
+  background-color: #fff; /* Ensure caption background is white */
+  min-height: 40px; /* Ensure some space for caption even if short */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-card-gallery:hover .image-caption-gallery {
+    color: var(--primary-color-gallery);
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .gallery-hero h1 {
+    font-size: 2.2rem;
+  }
+  .category-title-gallery {
+    font-size: 1.8rem;
+  }
+  .image-grid-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-padding-gallery {
+    padding: 30px 15px;
+  }
+  .gallery-hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero-subtitle-gallery {
+    font-size: 1rem;
+  }
+  .category-title-gallery {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+  .image-grid-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Or simply 1fr for single column */
+    gap: 15px;
+  }
+  .gallery-img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+    .image-grid-gallery {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+    .gallery-img {
+        height: 250px; /* Allow more height in single column */
+    }
+}
